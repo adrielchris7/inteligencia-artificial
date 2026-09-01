@@ -8,8 +8,8 @@ from pathlib import Path
 from wumpus.config import WorldConfig, load_config
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CONFIG = ROOT / "config" / "classic_4x4.yaml"
-
+#DEFAULT_CONFIG = ROOT / "config" / "classic_4x4.yaml"
+DEFAULT_CONFIG = ROOT / "config" / "classic_4x4_own.yaml"
 
 def build_parser(description: str) -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=description)

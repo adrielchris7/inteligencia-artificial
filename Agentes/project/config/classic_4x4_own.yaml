@@ -10,14 +10,14 @@ agent:
   direction: east
   arrows: 1
 
-wumpus: [4, 3]
+wumpus: [3, 3]
 
 pits:
-  - [3, 2]
-  - [1, 2]
+  - [1, 4]
+  - [4, 1]
   - [2, 4]
 
-gold: [4, 4]
+gold: [3, 4]
 
 scoring:
   gold: 1000
