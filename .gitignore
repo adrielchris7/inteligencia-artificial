@@ -6,3 +6,12 @@ venv/
 **/venv/
 .venv/
 **/.venv/
+
+# Secrets (commit `.env.example` templates only)
+.env
+.env.*
+!.env.example
+
+# Large embedding models
+LLMs/Notebooks/cc.es.300.bin
+
