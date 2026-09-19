@@ -1,0 +1,44 @@
+name: Empacar y calcular
+max_steps: 6
+
+# Local knowledge base for the Lookup tool.
+facts:
+  - key: closet
+    aliases: [closet, armario, ropa]
+    text: >
+      En el closet hay un suéter de lana, una chamarra, shorts y una playera ligera.
+  - key: react
+    aliases: [react, yao, artículo, articulo]
+    text: >
+      El artículo ReAct (Yao et al., 2023) combina chain-of-thought con el uso
+      de herramientas externas.
+
+# Forecasts for the Weather tool (the packing analogy from the lecture).
+weather:
+  Monterrey:
+    temp: 8
+    summary: frío y viento
+  Cancún:
+    temp: 32
+    summary: calor y sol
+  Mérida:
+    temp: 34
+    summary: muy caluroso
+
+queries:
+  - ¿Qué ropa me conviene llevar a Monterrey?
+  - ¿Cuánto es 17 * 24 + 5?
+  - ¿Quién escribió el artículo de ReAct?
+  - ¿Qué ropa me conviene llevar a Cancún?
+
+# Optional notes for the CoT-only comparison in program 04. Gemini no longer
+# reads these; without tools it answers from its own knowledge.
+priors:
+  - match: Monterrey
+    answer: Monterrey suele estar caliente; lleva shorts y una playera ligera.
+  - match: Cancún
+    answer: Cancún está frío en esta época; lleva un suéter y una chamarra.
+  - match: 17
+    answer: 17 * 24 + 5 = 408
+  - match: ReAct
+    answer: El artículo ReAct lo publicó un equipo de Google en 2020.

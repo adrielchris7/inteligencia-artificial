@@ -2,7 +2,7 @@
 
 Presentaciones y laboratorios de un curso de pregrado (AIMA / Russell & Norvig),
 desde agentes y búsqueda hasta redes, refuerzo, visión, modelos de lenguaje,
-RAG y GANs.
+RAG, GANs y programación de agentes (ReAct, MCP, LangGraph).
 
 Cada unidad suele tener:
 
@@ -10,7 +10,7 @@ Cada unidad suele tener:
 |---|---|
 | `PPTXs/` | Diapositivas 16:9 (español) |
 | `project/` | Programas numerados (`01_*.py`, …), YAML editable, algoritmo a mano (sin NumPy / sklearn / Gym) |
-| `Notebooks/` | Jupyter (Keras, FastText, Gemini, ChromaDB), cuando hay |
+| `Notebooks/` | Jupyter (Keras, FastText, Gemini, ChromaDB, LangGraph), cuando hay |
 | `ejercicios/` o `Ejercicios/` | Tareas para el estudiante, cuando hay |
 | `PDFs/`, `MDs/`, `HTMLs/` | Lecturas o notas, cuando hay |
 
@@ -28,12 +28,19 @@ python 01_*.py
 Los detalles (qué imprime cada programa, qué editar en el YAML) están en el
 `README.md` de esa unidad. La dependencia habitual es solo **PyYAML**.
 
+Excepciones: **Agentic programming** y el **Chatbot** necesitan
+`GEMINI_API_KEY` ([Google AI Studio](https://aistudio.google.com/apikey));
+el Chatbot también puede usar OpenAI. **MCP** usa FastMCP y pide **Python
+3.10+**. Esos tres no viven todos en `project/`: MCP está en [`MCP/`](MCP)
+y el Chatbot en [`Chatbot/`](Chatbot).
+
 No hace falta GPU: el laboratorio cabe en una tabla o en una matriz pequeña
 que se puede calcular a mano.
 
 ## Unidades
 
-Las presentaciones están en `Unidad/PPTXs/`. Los laboratorios, en `Unidad/project/`.
+Las presentaciones están en `Unidad/PPTXs/`. Los laboratorios, en
+`Unidad/project/` (salvo MCP y Chatbot).
 
 | Unidad | Presentación | Laboratorio | Ejercicios |
 |---|---|---|---|
@@ -52,10 +59,14 @@ Las presentaciones están en `Unidad/PPTXs/`. Los laboratorios, en `Unidad/proje
 | [GANs](GANs) | `gans.pptx` | Generador / discriminador 1D | — |
 | [LLMs](LLMs) | `llms.pptx` | Siguiente token, softmax, atención | — |
 | [RAG](RAG) | `RAG.pptx` | Embeddings, k-NN, citas | [Proyecto final](RAG/Proyecto%20final/proyecto%20RAG.md) |
+| [Agentic programming](Agentic%20programming) | `01 Agente ReAct.pptx` | ReAct (Thought / Action / Observation) | — |
+| [MCP](MCP) | — | Servidor FastMCP (`greet`, `add`) | — |
+| [LangGraph](LangGraph) | — | Notebook `01 langGraph.ipynb` | — |
 | [AI Engineering](AI%20Engineering) | `the-ai-engineering-skills-map.pptx` | — | — |
 
 GANs, LLMs y RAG incluyen diapositivas extra (embeddings, transformers, variantes
-de GAN). Clustering, Perceptrón, Visión, LLMs y RAG tienen `Notebooks/`.
+de GAN). Clustering, Perceptrón, Visión, LLMs, RAG, Agentic programming y
+LangGraph tienen `Notebooks/`.
 
 ## Chatbot
 
@@ -76,6 +87,23 @@ streamlit run app.py
 
 Abre `http://localhost:8501`. Instrucciones completas en
 [Chatbot/README.md](Chatbot/README.md).
+
+## MCP
+
+Servidor mínimo con [FastMCP](https://gofastmcp.com): dos tools (`greet`,
+`add`), un resource y un prompt. Cursor lo carga desde
+[`.cursor/mcp.json`](.cursor/mcp.json). Python **3.10+**.
+
+```bash
+cd MCP
+python3 -m venv venv
+source venv/bin/activate
+python -m pip install -r requirements.txt
+python client.py                  # lista tools y las llama in-process
+```
+
+`python server.py` espera en stdin/stdout (así lo arrancan Cursor y Claude
+Desktop). Detalles en [MCP/README.md](MCP/README.md).
 
 ## Otros materiales
 

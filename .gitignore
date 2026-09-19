@@ -1,6 +1,9 @@
 .DS_Store
 **/.DS_Store
 
+# Cursor local config
+.cursor/
+
 # Python virtual environments (any depth)
 venv/
 **/venv/

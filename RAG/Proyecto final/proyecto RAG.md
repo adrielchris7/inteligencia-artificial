@@ -62,10 +62,9 @@ No sustituyas estas cuatro piezas. Puedes añadir librerías de apoyo
 2. **FastAPI** — única API. Endpoints documentados (OpenAPI / `/docs`).
 3. **ChromaDB** — única base vectorial. Persistente en disco (no un dict en
    RAM que se pierde al reiniciar).
-4. **Google AI** — única fuente de **embeddings**. Usa la API de Google AI
+4. **Google AI** — fuente posible de **embeddings**. Usa la API de Google AI
    Studio / Gemini (`google-genai` o el SDK equivalente). Modelo de
-   embeddings, por ejemplo `text-embedding-004` o `gemini-embedding-001`
-   (el que esté vigente en la documentación oficial al momento de entregar).
+   embeddings, por ejemplo `text-embedding-004` o `gemini-embedding-001`.
 
 La clave va en un archivo `.env` (`GOOGLE_API_KEY=...`) que **no** se
 sube al repositorio. En el README indica cómo obtenerla en
